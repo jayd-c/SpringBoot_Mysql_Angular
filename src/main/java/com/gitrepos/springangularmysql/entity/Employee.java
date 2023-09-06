@@ -18,6 +18,13 @@ public class Employee implements Serializable {
     @Column(nullable = false, updatable = false)
     private String employeeCode;
 
+    public Employee() {
+    }
+
+    public Employee(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
     public Employee(Long employeeId, String employeeName, String employeeEmail, String employeeTitle, String phone, String imageUrl, String employeeCode) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -33,18 +32,12 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id) {
-        return employeeRepository.findEmployeeById(id)
+        return employeeRepository.findEmployeeByEmployeeId(id)
                 .orElseThrow(()-> new EmployeeNotFoundException("Employee by id " + id + " was not found"));
-//        Employee employee;
-//        Optional<Employee> employeeOptional = employeeRepository.findById(id);
-//        if(employeeOptional.isPresent()) {
-//             employee = employeeOptional.get();
-//            return employee;
-//        } else throw new EmployeeNotFoundException("Employee by id " + id + " was not found");
 
     }
     public String deleteEmployeeById (Long id) {
-        employeeRepository.deleteEmployeeById(id);
+        employeeRepository.deleteEmployeeByEmployeeId(id);
         return "Delete successful";
     }
 
