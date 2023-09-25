@@ -9,10 +9,12 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false, updatable = false)
-    private Long employeeId;
-    private String employeeName;
-    private String employeeEmail;
-    private String employeeTitle;
+
+
+    private Long id;
+    private String name;
+    private String email;
+    private String jobTitle;
     private String phone;
     private String imageUrl;
     @Column(nullable = false, updatable = false)
@@ -21,50 +23,59 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
-    public Employee(Long employeeId) {
-        this.employeeId = employeeId;
+    public Employee(Long id) {
+        this.id = id;
     }
 
-    public Employee(Long employeeId, String employeeName, String employeeEmail, String employeeTitle, String phone, String imageUrl, String employeeCode) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.employeeEmail = employeeEmail;
-        this.employeeTitle = employeeTitle;
+    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+        this.name = name;
+        this.email = email;
+        this.jobTitle = jobTitle;
         this.phone = phone;
         this.imageUrl = imageUrl;
         this.employeeCode = employeeCode;
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
+    public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.phone = phone;
+        this.imageUrl = imageUrl;
+        this.employeeCode = employeeCode;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+    public Long getId() {
+        return id;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public String getName() {
+        return name;
     }
 
-    public String getEmployeeEmail() {
-        return employeeEmail;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public String getEmployeeTitle() {
-        return employeeTitle;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setEmployeeTitle(String employeeTitle) {
-        this.employeeTitle = employeeTitle;
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public String getPhone() {
