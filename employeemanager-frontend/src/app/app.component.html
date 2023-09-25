@@ -40,8 +40,8 @@
                 </ul>
                 <div class="card-body">
                     <div class="float-right btn-group btn-group-sm">
-                        <a (click)="onOpenModal(employee,'add')"  href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                        <a (click)="onOpenModal(employee,'add')" href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                        <a (click)="onOpenModal(employee,'edit')"  href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onOpenModal(employee,'delete')" href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
                     </div>
                     <!-- <ul class="social-links list-inline mb-0">
                         <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
@@ -57,7 +57,7 @@
     </div>
     <!-- Button will be created for individual modals programmatically lauch modal -->
     
-
+ <!-- *************add employee ******************** -->
   <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -89,9 +89,6 @@
             <label for="imageUrl">Image Url</label>
             <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" required>
           </div>
-        
-          
-        
         <div class="modal-footer">
           <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
@@ -100,6 +97,59 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- *************edit************* -->
+
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee {{editEmployee?.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{editEmployee?.name}}" name="name" aria-describedby="emailHelp" class="form-control" placeholder="Name">
+          </div>
+          <input type="hidden" ngModel="{{editEmployee?.id}}" name="id" id="id" class="form-control" >
+          <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" id="employeeCode" class="form-control">
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" ngModel="{{editEmployee?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" ngModel="{{editEmployee?.jobTitle}}" name="jobTitle" class="form-control" id="jobTitle">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone No</label>
+            <input type="text" ngModel="{{editEmployee?.phone}}" name="phone" class="form-control" id="phone">
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image Url</label>
+            <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image url">
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="onUpdateEmployee(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- *********************** -->
+
 
   <div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -121,25 +171,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 
     <div class="alert alert-success" role="alert">
@@ -149,3 +181,4 @@
         <p class="mb-0">No employees were found</p>
       </div>
 </div>
+  

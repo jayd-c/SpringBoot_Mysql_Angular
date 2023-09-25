@@ -26,7 +26,7 @@ constructor(private http: HttpClient) {}
   }
 
   public updateEmployee(employee:Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.url}/add`, employee);
+    return this.http.put<Employee>(`${this.url}/update`, employee);
   }
 
   public deleteEmployee(employeeId:number): Observable<void> {
