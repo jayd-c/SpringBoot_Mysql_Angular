@@ -36,9 +36,8 @@ public class EmployeeService {
                 .orElseThrow(()-> new EmployeeNotFoundException("Employee by id " + id + " was not found"));
 
     }
-    public String deleteEmployeeById (Long id) {
+    public void deleteEmployeeById (Long id) {
         employeeRepository.deleteEmployeeById(id);
-        return "Delete successful";
     }
 
 }

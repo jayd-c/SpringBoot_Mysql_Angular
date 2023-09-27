@@ -2,6 +2,7 @@ package com.gitrepos.springangularmysql.controller;
 
 import com.gitrepos.springangularmysql.entity.Employee;
 import com.gitrepos.springangularmysql.service.EmployeeService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,13 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("employee")
+@Transactional
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
     @Autowired
+    private final EmployeeService employeeService;
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -46,7 +50,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteEmployee(Long id) {
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
